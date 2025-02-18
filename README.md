@@ -1,3 +1,7 @@
+# What is this?
+
+This is a collection of usage of the [huggingface transformers](https://github.com/huggingface/transformers) 
+
 # Setup the env
 
 1. Enable the venv
