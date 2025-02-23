@@ -14,7 +14,8 @@ if __name__ == "__main__":
     print(model)
 
     inputs_ids = torch.randint(low=0, high=config.vocab_size, size=(4, 30))
-    res = model(inputs_ids)
+    for i in range(1000):
+        res = model(inputs_ids)
 
     # res is BaseModelOutputWithPast type
     print(f"{res.last_hidden_state.shape=}")
