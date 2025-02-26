@@ -59,6 +59,10 @@ python run_clm.py \
 
 [Instruction](https://huggingface.co/docs/transformers/en/perf_train_gpu_one#using-torchcompile)
 
+Note: the "inductor" backend is not supported because my 1080Ti GPU is too old.
+
+TODO: profile the performance
+
 When torch.compile() is enabled: 7.3GB bs=4
 
 ```
