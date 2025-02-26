@@ -99,3 +99,47 @@ python run_clm.py \
     --block_size 1024 \
     --output_dir /tmp/test-clm
 ```
+
+## Different Optimizer
+
+[Optimizer choices](https://huggingface.co/docs/transformers/en/perf_train_gpu_one#optimizer-choice)
+
+The default is adamw.
+
+When using optim=adafactor, GPU RAM = 6.5GB for bs=8.
+
+```
+rm -rf /tmp/test-clm && 
+python run_clm.py \
+    --model_name_or_path facebook/opt-125m \
+    --dataset_name wikitext \
+    --dataset_config_name wikitext-2-raw-v1 \
+    --per_device_train_batch_size 8 \
+    --per_device_eval_batch_size 8 \
+    --do_train \
+    --do_eval \
+    --gradient_checkpointing \
+    --optim=adafactor \
+    --num_train_epochs 32 \
+    --block_size 1024 \
+    --output_dir /tmp/test-clm
+```
+
+When using optim=adamw_bnb_8bit, GPU RAM = 8.0GB for bs=8.
+
+```
+rm -rf /tmp/test-clm && 
+python run_clm.py \
+    --model_name_or_path facebook/opt-125m \
+    --dataset_name wikitext \
+    --dataset_config_name wikitext-2-raw-v1 \
+    --per_device_train_batch_size 8 \
+    --per_device_eval_batch_size 8 \
+    --do_train \
+    --do_eval \
+    --gradient_checkpointing \
+    --optim=adamw_bnb_8bit \
+    --num_train_epochs 32 \
+    --block_size 1024 \
+    --output_dir /tmp/test-clm
+```
